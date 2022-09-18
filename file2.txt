@@ -1,0 +1,11 @@
+import os
+
+# The Google Cloud Notebook product has specific requirements
+IS_GOOGLE_CLOUD_NOTEBOOK = os.path.exists("/opt/otron/deeplearning/metadata/env_version")
+
+# Google Cloud Notebook requires dependencies to be installed with '--user'
+USER_FLAG = ""
+if IS_GOOGLE_CLOUD_NOTEBOOK:
+    USER_FLAG = "--user"
+    
+print("This is a test")
