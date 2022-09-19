@@ -1,2 +1,6 @@
 data/
 .vscode
+
+venv/bin/
+
+venv/
