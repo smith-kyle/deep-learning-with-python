@@ -1,0 +1,19 @@
+import os
+
+# The Google Cloud Notebook product has specific requirements
+IS_GOOGLE_CLOUD_NOTEBOOK = os.path.exists("/opt/otron/deeplearning/metadata/env_version")
+
+# Google Cloud Notebook requires dependencies to be installed with '--user'
+USER_FLAG = ""
+if IS_GOOGLE_CLOUD_NOTEBOOK:
+    USER_FLAG = "--user"
+    
+print("""
+  WARNING: The script avro is installed in '/home/jupyter/.local/bin' which is not on PATH. 
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location. 
+  WARNING: The script tb-gcp-uploader is installed in '/home/jupyter/.local/bin' which is not on PATH. 
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location. 
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts. 
+google-cloud-recommendations-ai 0.2.0 requires google-api-core[grpc]<2.0.0dev,>=1.22.2, but you have google-api-core 2.8.1 which is incompatible. 
+apache-beam 2.40.0 requires dill<0.3.2,>=0.3.1.1, but you have dill 0.3.5.1 which is incompatible. 
+apache-beam 2.40.0 requires pyarrow<8.0.0,>=0.15.1, but you have pyarrow 9.0.0 which is incompatible. """)
